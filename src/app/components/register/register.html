@@ -1,0 +1,34 @@
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Order form -->
+            <form [formGroup]="authForm" (ngSubmit)="onSubmitForm()">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Log-in to your account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <label for="modal-mail" class="form-label">Your e-mail adress:</label>
+                    <input type="email" class="form-control" id="modal-mail" formControlName="mail" autocomplete="off" placeholder="name@company.com">
+                    @if (authForm.get("mail")?.invalid && authForm.get("mail")?.touched) {
+                        <div style="color:red;">A valid e-mail is required.</div>
+                    }
+                    
+                    <label for="modal-password" class="form-label">Your password:</label>
+                    <input type="password" autocomplete="one-time-code" class="form-control" id="modal-password" formControlName="password" autocomplete="off" placeholder="password">
+                    @if (authForm.get("password")?.invalid && authForm.get("password")?.touched) {
+                        <div style="color:red;">A valid password is required.</div>
+                    }
+                </div>
+                
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="authForm.invalid" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

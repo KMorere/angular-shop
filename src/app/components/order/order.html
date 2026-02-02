@@ -1,0 +1,49 @@
+<div class="modal fade" id="order-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Order form -->
+            <form [formGroup]="orderForm" (ngSubmit)="onSubmitOrder()">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Validate your order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <label for="modal-first-name" class="form-label">Your first name:</label>
+                    <input class="form-control" id="modal-first-name" formControlName="firstName" autocomplete="off"  placeholder="John">
+                    @if (orderForm.get("firstName")?.invalid && orderForm.get("firstName")?.touched) {
+                        <div style="color:red;">A valid first name is required.</div>
+                    }
+                    
+                    <label for="modal-last-name" class="form-label">Your last name:</label>
+                    <input class="form-control" id="modal-last-name" formControlName="lastName" autocomplete="off"  placeholder="Smith">
+                    @if (orderForm.get("lastName")?.invalid && orderForm.get("lastName")?.touched) {
+                        <div style="color:red;">A valid last name is required.</div>
+                    }
+                    
+                    <label for="modal-address" class="form-label">Your address:</label>
+                    <input class="form-control" id="modal-address" formControlName="address" autocomplete="off">
+                    
+                    <label for="modal-phone" class="form-label">Your phone number:</label>
+                    <input class="form-control" id="modal-phone" formControlName="phone" autocomplete="off"  placeholder="0641322314">
+                    @if (orderForm.get("phone")?.invalid && orderForm.get("phone")?.touched) {
+                        <div style="color:red;">A valid phone number is required.</div>
+                    }
+
+                    <label for="modal-mail" class="form-label">Your e-mail adress:</label>
+                    <input type="email" class="form-control" id="modal-mail" formControlName="mail" autocomplete="off" placeholder="name@company.com">
+                    @if (orderForm.get("mail")?.invalid && orderForm.get("mail")?.touched) {
+                        <div style="color:red;">A valid e-mail is required.</div>
+                    }
+                </div>
+                
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
