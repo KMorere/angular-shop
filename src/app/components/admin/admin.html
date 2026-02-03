@@ -1,6 +1,9 @@
 <div class="container">
     <ng-container>
-        <button class="btn btn-success" style="margin-top: 10px;" (click)="setAction('create')" data-bs-toggle="modal" data-bs-target="#course-modal">+ Add Course</button>
+        <button class="btn btn-success" style="margin-top: 10px;" (click)="setAction('create')" data-bs-toggle="modal" data-bs-target="#course-modal">
+            <img src="add.png" width="20px" height="20px">
+            Add Course
+        </button>
 
         <table class="table table-striped table-bordered" style="margin-top: 10px;">
             <thead>
@@ -18,13 +21,15 @@
                         <td>{{course.name}}</td>
                         <td>{{course.description}}</td>
                         <td>{{course.price | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
+
                         <td class="buttons text-center"><button type="button" class="btn btn-primary"
                              (click)="updateCourse(course)" data-bs-toggle="modal" data-bs-target="#course-modal">
                             <img src="edit.png" width="20px" height="20px">
                             Update
                         </button></td>
                         <td class="buttons text-center"><button type="button" class="btn btn-danger" (click)="deletCourse(course)">
-                            X Delete
+                            <img src="delete.png" width="20px" height="20px">
+                            Delete
                         </button></td>
                     </tr>
                 }
