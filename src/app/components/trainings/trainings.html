@@ -26,9 +26,12 @@
                             <td>{{course.description}}</td>
                             <td>{{course.price | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
                             <td><input type="number" name="quantity" style="width: 60px" min="0" [value]="course.quantity" (input)="updateQuantity(course, $event.target.value)"></td>
-                            <td>
+                            <td class="buttons text-center">
                                 @if(+course.quantity > 0) {
-                                    <button type="button" class="btn btn-primary" (click)="onAddToCart(course)">Add to cart</button>
+                                    <button type="button" class="btn btn-primary" (click)="onAddToCart(course)">
+                                        <img src="add.png" width="20px" height="20px">
+                                        Add to cart
+                                    </button>
                                 }
                                 @else {
                                     <a class="btn btn-secondary disabled">Add to cart</a>

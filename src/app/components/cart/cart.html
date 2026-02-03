@@ -17,30 +17,38 @@
                             <td>{{course.name}}</td>
                             <td>{{course.quantity}}</td>
                             <td>{{+course.price * +course.quantity | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
-                            <td>
-                                <button type="button" class="btn btn-danger" (click)="deleteCourse(course)">Delete</button>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-danger" (click)="deleteCourse(course)">
+                                    <img src="delete.png" width="20px" height="20px">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     }
                     <tr>
                         <td class="fw-bold">TOTAL</td>
-                        <td [innerText]="getTotal()"></td>
+                        <td>{{getTotal() | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
+
+                        <td></td>
+                        <td></td>
+
+                        <td class="buttons text-end">
+                            @if (cart.size > 0) {
+                                @if (this.auth.isLoggedIn()) {
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#order-modal">
+                                        Start order
+                                    </button>
+                                    <app-order></app-order>
+                                } @else {
+                                    <button type="button" class="btn btn-secondary" disabled>
+                                        Must be logged-in
+                                    </button>
+                                }
+                            }
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
-            @if (cart.size > 0) {
-                @if (this.auth.isLoggedIn()) {
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#order-modal">
-                        Start order
-                    </button>
-                    <app-order></app-order>
-                } @else {
-                    <button type="button" class="btn btn-secondary" disabled>
-                        Must be logged-in
-                    </button>
-                }
-            }
         </ng-container>
     }
 </div>
