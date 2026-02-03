@@ -30,6 +30,7 @@ export class CartService {
 
 		if (newCourse) {
 			newCourse.quantity += course.quantity;
+			console.log(newCourse, course);
 		} else {
 			this.cartContent?.push(course);
 		}
@@ -50,14 +51,12 @@ export class CartService {
 		cart.push(course);*/
 		
 		localStorage.setItem(this.CART_KEY, JSON.stringify(this.cartContent));
-		if(newCourse)
-			newCourse.quantity = "1";
 	}
 
 	getTotal():number {
 		let total = 0;
 		this.cartContent?.forEach((course: Training) => {
-			total += +course.price * +course.quantity;
+			total += course.price * course.quantity;
 		});
 		return total;
 	}
@@ -74,7 +73,7 @@ export class CartService {
 
     isValidCourse(obj: any): obj is Training {
         return (
-            typeof obj.id === "number" &&
+            typeof obj.id === "string" &&
             typeof obj.name === "string" &&
             typeof obj.description === "string" &&
             typeof obj.price === "number" &&
@@ -88,7 +87,7 @@ export class CartService {
             if (course && this.isValidCourse(course)) {
                 return course;
             } else {
-                console.error("JSON does not match the expected Course structure.");
+                console.error("JSON does not match the expected Course structure.", course);
                 return null;
             }
         } catch (error) {

@@ -59,8 +59,8 @@ export class Admin implements OnInit {
             String(this.listTrainings.length+1),
             newCourse.name,
             newCourse.description,
-            String(newCourse.price),
-            String(1)
+            newCourse.price,
+            1
         ));
     }
 
@@ -96,8 +96,8 @@ export class Admin implements OnInit {
             String(this.currentCourse.id),
             newCourse.name,
             newCourse.description,
-            String(newCourse.price),
-            String(1)
+            newCourse.price,
+            1
         )).subscribe({
             next: (data) => {
                 console.log("Response body:", data);
@@ -110,8 +110,8 @@ export class Admin implements OnInit {
             String(course.id),
             course.name,
             course.description,
-            String(course.price),
-            String(1)
+            course.price,
+            1
         )).subscribe({
             next: (data) => {
                 console.log("Response body:", data);

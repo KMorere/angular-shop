@@ -42,7 +42,7 @@ export class Trainings implements OnInit {
 	updateQuantity(course: Training, amount: string) {
 		const parsedAmount = Number(amount);
 		if (!isNaN(parsedAmount)) {
-			course.quantity = String(parsedAmount);
+			course.quantity = parsedAmount;
 		}
 	}
 
@@ -59,7 +59,7 @@ export class Trainings implements OnInit {
 		let items: HTMLCollection | undefined = (document.getElementById("course-grid"))?.children;
 		this.listTrainings?.forEach((product: Training, i: number) => {
 			if (items != undefined && items[i] instanceof HTMLTableRowElement) {
-				if (+product.price < this.min)
+				if (product.price < this.min)
 					items[i].style.display = "none";
 				else
 					items[i].style.display = "";
@@ -76,7 +76,7 @@ export class Trainings implements OnInit {
 		let items: HTMLCollection | undefined = (document.getElementById("course-grid"))?.children;
 		this.listTrainings?.forEach((product: Training, i: number) => {
 			if (items != undefined && items[i] instanceof HTMLTableRowElement) {
-				if (+product.price > this.max)
+				if (product.price > this.max)
 					items[i].style.display = "none";
 				else
 					items[i].style.display = "";
