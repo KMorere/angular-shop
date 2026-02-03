@@ -24,7 +24,7 @@
                             <td>{{course.id}}</td>
                             <td>{{course.name}}</td>
                             <td>{{course.description}}</td>
-                            <td>{{course.price}}</td>
+                            <td>{{course.price | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
                             <td><input type="number" name="quantity" style="width: 60px" min="0" [value]="course.quantity" (input)="updateQuantity(course, $event.target.value)"></td>
                             <td>
                                 @if(+course.quantity > 0) {

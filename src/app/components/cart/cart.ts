@@ -3,10 +3,13 @@ import { CartService } from '../../service/cart';
 import { Training } from '../../model/Training';
 import { OrderComponent } from "../order/order";
 import { Auth } from '../../service/auth';
+import localeFr from '@angular/common/locales/fr';
+import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
+registerLocaleData(localeFr);
 
 @Component({
     selector: 'app-cart',
-    imports: [OrderComponent],
+    imports: [OrderComponent, CommonModule, CurrencyPipe],
     templateUrl: './cart.html',
     styleUrl: './cart.css',
 })
