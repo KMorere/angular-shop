@@ -111,10 +111,10 @@ export class Admin implements OnInit {
 
     deletCourse(course: Training) {
         this.admin.deleteCourse(new Training(
-            String(this.currentCourse.id),
-            this.currentCourse.name,
-            this.currentCourse.description,
-            String(this.currentCourse.price),
+            String(course.id),
+            course.name,
+            course.description,
+            String(course.price),
             String(1)
         )).subscribe({
             next: (data) => {
