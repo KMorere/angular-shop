@@ -51,13 +51,13 @@ export class CartService {
 		
 		localStorage.setItem(this.CART_KEY, JSON.stringify(this.cartContent));
 		if(newCourse)
-			newCourse.quantity = 1;
+			newCourse.quantity = "1";
 	}
 
 	getTotal():number {
 		let total = 0;
 		this.cartContent?.forEach((course: Training) => {
-			total += course.price * course.quantity;
+			total += +course.price * +course.quantity;
 		});
 		return total;
 	}

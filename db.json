@@ -1,25 +1,32 @@
 {
   "courses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Python",
       "description": "Formation Python.",
-      "price": 1000,
-      "quantity": 1
+      "price": "1000",
+      "quantity": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Java",
       "description": "Formation Java.",
-      "price": 1500,
-      "quantity": 1
+      "price": "1500",
+      "quantity": "1"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "HTML",
       "description": "Formation HTML.",
-      "price": 2000,
-      "quantity": 1
+      "price": "2000",
+      "quantity": "1"
+    },
+    {
+      "id": "4",
+      "name": "Angular",
+      "description": "Angular training course.",
+      "price": "750",
+      "quantity": "1"
     }
   ]
 }
