@@ -30,8 +30,8 @@ export class Admin implements OnInit {
     currentCourse!: Training;
 
     ngOnInit(): void {
-        if (this.auth.isLoggedIn() === false) {
-            /*this.router.navigateByUrl("trainings");*/
+        if (!this.auth.isLoggedIn() && this.auth.isAdmin()) {
+            this.router.navigateByUrl("trainings");
         }
 
         this.listTrainings = courses.courses;
