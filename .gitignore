@@ -28,6 +28,7 @@ yarn-error.log
 !.vscode/extensions.json
 !.vscode/mcp.json
 .history/*
+/.vscode
 
 # Miscellaneous
 /.angular/cache
@@ -38,6 +39,13 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+.editorconfig
+angular.json
+package-lock.json
+package.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
 
 # System files
 .DS_Store
