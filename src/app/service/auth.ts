@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
+import db from '../../../db.json'
+import { Encryption } from './encryption';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export enum Role {
     User = "USER",
@@ -11,14 +15,11 @@ export enum Role {
     providedIn: 'root',
 })
 export class Auth {
-    constructor() { };
+    constructor(private http: HttpClient, private enc: Encryption) { };
 
-    users: User[] = [
-        new User("admin@gmail.com", "root", [Role.User, Role.Admin]),
-        new User("user@gmail.com", "1234", [Role.User])
-    ];
+    users: User[] = db.users;
 
-    currentUser: User | undefined =  new User("", "", []);
+    currentUser: User | undefined =  new User("", "", "", []);
 
     isLoggedIn(): boolean {
         return (this.currentUser != null && this.users.includes(this.currentUser));
@@ -26,5 +27,15 @@ export class Auth {
 
     isAdmin(): boolean {
         return (this.currentUser != undefined && this.currentUser.roles.includes(Role.Admin));
+    }
+
+    getUser(id: string): Observable<any> {
+        return this.http.get("http://localhost:3000/users/"+id);
+    }
+
+    addUser(user: User): Observable<any> {
+        const newUser: User = user;
+        /*newUser.password = this.enc.encrypt(newUser.password);*/
+        return this.http.post("http://localhost:3000/users", JSON.stringify(user));
     }
 }

@@ -21,6 +21,7 @@ export class Register {
 
     onSubmitForm() {
         const newUser: User = new User(
+            "",
             this.authForm.value.mail,
             this.authForm.value.password,
             [Role.User]

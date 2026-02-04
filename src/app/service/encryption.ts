@@ -10,28 +10,17 @@ export class Encryption {
 
     constructor() {}
 
-    setItem(key: string, data: any): void {
-        try {
-            const dataString = JSON.stringify(data);
-            const encryptedData = CryptoJS.AES.encrypt(
-                dataString,
-                this.key
-            ).toString();
-
-            localStorage.setItem(key, encryptedData);
-        } catch (error) {
-            console.error('Error encrypting and saving data:', error);
-        }
+    encrypt(key: string, data: any): string {
+        const dataString = JSON.stringify(data);
+        return CryptoJS.AES.encrypt(
+            dataString,
+            this.key
+        ).toString();
     }
 
-    getItem(key: string): any {
+    decrypt(encryptedData: string): any {
         try {
-            const encrypedData = localStorage.getItem(key);
-
-            if (!encrypedData)
-                return null;
-
-            const decryptedBytes = CryptoJS.AES.decrypt(encrypedData, this.key);
+            const decryptedBytes = CryptoJS.AES.decrypt(encryptedData, this.key);
             const decryptedString = decryptedBytes.toString(CryptoJS.enc.Utf8);
 
             return JSON.parse(decryptedString);
