@@ -17,6 +17,8 @@ export class Trainings implements OnInit {
 	listTrainings: Training[] | undefined;
 	min: number = 0;
 	max: number = 0;
+
+	showGrid: boolean = false;
 	
 	constructor(private cart: CartService, private router: Router) { }
 

@@ -2,3 +2,43 @@
     white-space: nowrap;
     width: 1%;
 }
+
+.display-grid button {
+    border-radius: 0px;
+}
+
+.display-grid button:first-child {
+    border-top-left-radius: 25%;
+    border-bottom-left-radius: 25%;
+}
+
+.display-grid button:last-child {
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+}
+
+.display-grid .vr {
+    z-index: 1;
+}
+
+.img-container {
+    width: 100%;
+    height: 128px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.card-body {
+    height: 12rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

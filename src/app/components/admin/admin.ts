@@ -60,7 +60,8 @@ export class Admin implements OnInit {
             newCourse.name,
             newCourse.description,
             newCourse.price,
-            1
+            1,
+            newCourse.image
         ));
     }
 
@@ -97,7 +98,8 @@ export class Admin implements OnInit {
             newCourse.name,
             newCourse.description,
             newCourse.price,
-            1
+            1,
+            newCourse.image
         )).subscribe({
             next: (data) => {
                 console.log("Response body:", data);
@@ -111,7 +113,8 @@ export class Admin implements OnInit {
             course.name,
             course.description,
             course.price,
-            1
+            1,
+            course.image
         )).subscribe({
             next: (data) => {
                 console.log("Response body:", data);

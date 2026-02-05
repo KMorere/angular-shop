@@ -1,32 +1,55 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "mail": "admin@gmail.com",
+      "password": "root",
+      "roles": [
+        "USER",
+        "ADMIN"
+      ]
+    },
+    {
+      "id": "2",
+      "mail": "user@gmail.com",
+      "password": "test",
+      "roles": [
+        "USER"
+      ]
+    }
+  ],
   "courses": [
     {
       "id": "1",
       "name": "Python",
       "description": "Formation Python.",
       "price": 1000,
-      "quantity": 1
+      "quantity": 1,
+      "image": "thumbnails/python.png"
     },
     {
       "id": "2",
       "name": "Java",
       "description": "Formation Java.",
       "price": 1500,
-      "quantity": 1
+      "quantity": 1,
+      "image": "thumbnails/java.png"
     },
     {
       "id": "3",
       "name": "HTML",
       "description": "Formation HTML.",
       "price": 2000,
-      "quantity": 1
+      "quantity": 1,
+      "image": "thumbnails/html.jfif"
     },
     {
       "id": "4",
       "name": "Angular",
       "description": "Angular training course.",
       "price": 750,
-      "quantity": 1
+      "quantity": 1,
+      "image": "thumbnails/angular.png"
     }
   ]
 }
