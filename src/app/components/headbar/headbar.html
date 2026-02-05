@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-sm bg-body-tertiary bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">TRAININGS</a>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/trainings">Courses</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/cart">Cart</a>
+				</li>
+
+				@if (this.auth.isAdmin()) {
+					<li class="nav-item">
+						<a class="nav-link" routerLink="/admin">Admin</a>
+					</li>
+				}
+
+				<li class="nav-item">
+					<button class="nav-link" data-bs-toggle="modal" data-bs-target="#register-modal">Log-in</button>
+					<app-register></app-register>
+				</li>
+			</ul>
+
+		<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarContent">
+			<button type="button" class="btn btn-primary btn-sm px-2 mx-2" (click)="toggleTheme()">
+				@if (theme.theme() === "light") {
+					<i class="bi bi-moon-stars-fill"></i>
+				} @else {
+					<i class="bi bi-sun-fill"></i>
+				}
+			</button>
+
+			<form class="d-flex nav-item dropdown" role="search" [formGroup]="searchForm" (ngSubmit)="onSearchCourse()">
+				<input type="search" class="form-control me-2 dropdown-toggle" formControlName="text"
+				 data-bs-toggle="dropdown" placeholder="Search for course..." aria-label="Search"/>
+				<button type="submit" class="btn btn-outline-secondary">Search</button>
+				
+				<ul class="dropdown-menu" id="coursesSearch">
+					@for(course of coursesArray; track course) {
+						<li>
+							<button class="dropdown-item" href="#" (click)="onAddToCart(course)">{{course.name}}</button>
+						</li>
+					}
+				</ul>
+			</form>
+		</div>
+	</div>
+</nav>

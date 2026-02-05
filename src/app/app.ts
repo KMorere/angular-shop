@@ -1,64 +1,13 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref, Router } from '@angular/router';
-import courses from "../../db.json"
-import { Training } from './model/Training';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CartService } from './service/cart';
-import { Auth } from './service/auth';
-import { Register } from './components/register/register';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Headbar } from './components/headbar/headbar';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, RouterLinkWithHref, ReactiveFormsModule, Register],
+    imports: [RouterOutlet, Headbar],
     templateUrl: './app.html',
     styleUrl: './app.css'
 })
-export class App implements OnInit {
-    protected readonly title = signal('trainings-shop');
-
-	constructor(private cart: CartService, private router: Router, public auth: Auth) { }
-
-    searchForm!: FormGroup;
-
-    coursesArray = courses.courses;
-
-    ngOnInit(): void {
-        this.searchForm = new FormGroup({
-            text: new FormControl("")
-        });
-        
-        this.searchForm.valueChanges.subscribe(value => {
-            this.onSearchCourse();
-            this.createSearchValues(this.coursesArray);
-        });
-
-        this.createSearchValues(this.coursesArray);
-    }
-
-    createSearchValues(items: any) {
-        const coursesDropdown = document.getElementById("coursesSearch");
-
-        if (courses.courses.length == 0 || this.coursesArray.length == 0) {
-            let courseDiv: HTMLDivElement = document.createElement("div");
-            courseDiv.textContent = "No results found";
-            
-            coursesDropdown?.appendChild(courseDiv);
-        } else if (this.onSearchCourse() == "") {
-            this.coursesArray = courses.courses;
-        }
-    }
-
-    onSearchCourse() {
-        let key: string = this.searchForm.value.text.toLocaleLowerCase();
-
-        this.coursesArray = this.coursesArray.filter((course) => ((course.name + " " + course.description).toLocaleLowerCase().includes(key)));
-
-        return key
-    }
-
-	onAddToCart(course: Training) {
-		console.log("Added " + course.quantity + " " + course.name + ".");
-		this.cart.addCourse(course);
-		this.router.navigateByUrl("cart")
-	}
+export class App {
+    
 }
