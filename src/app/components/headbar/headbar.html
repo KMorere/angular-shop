@@ -24,11 +24,24 @@
 		<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarContent">
 			<button type="button" class="btn btn-primary btn-sm px-2 mx-2" (click)="toggleTheme()">
 				@if (theme.theme() === "light") {
-					<i class="bi bi-moon-stars-fill"></i>
-				} @else {
 					<i class="bi bi-sun-fill"></i>
+				} @else {
+                    <i class="bi bi-moon-stars-fill"></i>
 				}
 			</button>
+            
+            <div class="d-inline-flex align-items-center mx-3 me-4">
+                <input type="checkbox" class="checkbox" id="chk"
+                [checked]="theme.theme() === 'dark'" (change)="toggleTheme()"/>
+                <label class="label-switch" for="chk">
+                    @if (theme.theme() === "light") {
+                        <i class="bi bi-sun-fill"></i>
+                    } @else {
+                        <i class="bi bi-moon-stars-fill"></i>
+                    }
+                    <div class="ball"></div>
+                </label>
+            </div>
 
 			<form class="d-flex nav-item dropdown" role="search" [formGroup]="searchForm" (ngSubmit)="onSearchCourse()">
 				<input type="search" class="form-control me-2 dropdown-toggle" formControlName="text"
