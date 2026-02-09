@@ -61,30 +61,3 @@ mat-grid-tile:hover {
     border-color: gainsboro;
     background-color: ghostwhite;
 }
-
-mat-table {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #dee2e6;
-}
-
-mat-cell:not(:last-child) {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #dee2e6;
-}
-
-mat-row:nth-child(even) {
-    background-color: rgb(0, 0, 0, 0.05);
-}
-
-mat-header-cell, mat-row {
-    border-color: inherit;
-    border-style: solid;
-    border-width: thin;
-    border-color: #dee2e6;
-}
-
-mat-header-cell {
-    font-weight: bold;
-}

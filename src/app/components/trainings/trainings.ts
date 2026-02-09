@@ -1,12 +1,11 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Training } from '../../model/Training';
 import { CartService } from '../../service/cart';
 import { Router } from '@angular/router';
 import courses from "../../../../db.json"
 
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 import localeFr from '@angular/common/locales/fr';
 import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
@@ -14,7 +13,7 @@ registerLocaleData(localeFr);
 
 @Component({
 	selector: 'app-trainings',
-	imports: [CommonModule, CurrencyPipe, MatGridListModule, MatPaginatorModule, MatTableModule],
+	imports: [CommonModule, CurrencyPipe, MatGridListModule, MatPaginatorModule],
 	templateUrl: './trainings.html',
 	styleUrl: './trainings.css',
 })
