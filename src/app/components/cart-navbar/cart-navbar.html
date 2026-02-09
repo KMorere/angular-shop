@@ -1,0 +1,45 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cart-offcanvas">
+    <div class="offcanvas-header">
+        <h5>Offcanvas right</h5>
+        <div style="border-top: 1px solid; margin-top: 1rem; margin-bottom: 1rem;"></div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if (cart) {
+        <ng-container>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>QUANTITY</th>
+                        <th>PRICE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(course of cart; track course) {
+                        <tr>
+                            <td>{{course.name}}</td>
+                            <td>{{course.quantity}}</td>
+                            <td>{{(course.price * course.quantity) | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-danger" (click)="deleteCourse(course)">
+                                    <img src="delete.png" width="20px" height="20px">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="fw-bold">TOTAL</td>
+                        <td>{{getTotal() | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button type="button" class="btn btn-primary" routerLink="/cart" data-bs-dismiss="offcanvas">
+                Go to cart
+            </button>
+        </ng-container>
+    }
+    </div>
+</div>

@@ -9,10 +9,11 @@ import { Register } from '../../components/register/register';
 import { ThemeService } from '../../service/theme-service';
 
 import { MatBadgeModule } from '@angular/material/badge';
+import { CartNavbar } from "../cart-navbar/cart-navbar";
 
 @Component({
     selector: 'app-headbar',
-    imports: [RouterLinkWithHref, ReactiveFormsModule, Register, MatBadgeModule],
+    imports: [RouterLinkWithHref, ReactiveFormsModule, Register, MatBadgeModule, CartNavbar],
     templateUrl: './headbar.html',
     styleUrl: './headbar.css',
 })
