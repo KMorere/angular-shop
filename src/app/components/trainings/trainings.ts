@@ -1,23 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Training } from '../../model/Training';
 import { CartService } from '../../service/cart';
 import { Router } from '@angular/router';
 import courses from "../../../../db.json"
+
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+
 import localeFr from '@angular/common/locales/fr';
 import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
 registerLocaleData(localeFr);
 
 @Component({
 	selector: 'app-trainings',
-	imports: [CommonModule, CurrencyPipe, MatGridListModule],
+	imports: [CommonModule, CurrencyPipe, MatGridListModule, MatPaginatorModule, MatTableModule],
 	templateUrl: './trainings.html',
 	styleUrl: './trainings.css',
 })
 export class Trainings implements OnInit {
-	listTrainings: Training[] | undefined;
+	listTrainings: Training[] | undefined = [];
+	gridCourses: Training[] = [];
 	min: number = 0;
 	max: number = 0;
+	
+	totalPages: number = 0;
+
+	public currentIndex = 0;
+
+	pageCount = 10;
 
 	showGrid: boolean = false;
 	
@@ -25,10 +36,21 @@ export class Trainings implements OnInit {
 
 	ngOnInit(): void {
 		this.listTrainings = courses.courses;
+		this.gridCourses = this.listTrainings;
+
 		let price = document.getElementById("priceMax");
 		this.max = this.getHighest();
 		if (price != undefined) {
 			price.innerText = this.max.toString();
+		}
+	}
+
+	paginateCard(event: PageEvent) {
+		if (this.listTrainings) {
+			this.currentIndex = event.pageIndex;
+			this.pageCount = event.pageSize;
+			this.gridCourses = this.listTrainings.slice(this.currentIndex * this.pageCount, this.currentIndex + this.pageCount);
+			console.log(this.gridCourses, this.currentIndex, this.pageCount);
 		}
 	}
 

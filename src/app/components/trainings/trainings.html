@@ -70,7 +70,7 @@
                         </tr>
                     </thead>
                     <tbody id="course-grid">
-                        @for(course of listTrainings; track course) {
+                        @for(course of gridCourses; track course) {
                             <tr>
                                 <td>{{course.id}}</td>
                                 <td>{{course.name}}</td>
@@ -94,5 +94,8 @@
                 </table>
             }
         </ng-container>
+        
+        <mat-paginator #paginator [length]="listTrainings.length" [pageIndex]="currentIndex" [pageSize]="pageCount" [pageSizeOptions]="[3, 10, 25, 50, 100]" (page)="paginateCard($event)">
+        </mat-paginator>
     }
 </div>
