@@ -49,7 +49,6 @@ export class Trainings implements OnInit {
 			this.currentIndex = event.pageIndex;
 			this.pageCount = event.pageSize;
 			this.gridCourses = this.listTrainings.slice(this.currentIndex * this.pageCount, this.currentIndex + this.pageCount);
-			console.log(this.gridCourses, this.currentIndex, this.pageCount);
 		}
 	}
 

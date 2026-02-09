@@ -54,3 +54,11 @@
 .checkbox:checked + .label-switch {
     background-color: #f8f9fa;
 }
+
+.mat-badge-content {
+	background-color: red;
+	border-radius: 50%;
+	color: white;
+	font-size: 80%;
+	text-align: center;
+}

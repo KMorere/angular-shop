@@ -8,16 +8,18 @@ import { Auth } from '../../service/auth';
 import { Register } from '../../components/register/register';
 import { ThemeService } from '../../service/theme-service';
 
+import { MatBadgeModule } from '@angular/material/badge';
+
 @Component({
     selector: 'app-headbar',
-    imports: [RouterLinkWithHref, ReactiveFormsModule, Register],
+    imports: [RouterLinkWithHref, ReactiveFormsModule, Register, MatBadgeModule],
     templateUrl: './headbar.html',
     styleUrl: './headbar.css',
 })
 export class Headbar implements OnInit {
     protected readonly title = signal('trainings-shop');
 
-	constructor(private cart: CartService, private router: Router, public auth: Auth, public theme: ThemeService) { }
+	constructor(public cart: CartService, private router: Router, public auth: Auth, public theme: ThemeService) { }
 
     searchForm!: FormGroup;
 
