@@ -3,13 +3,14 @@ import { Training } from '../../model/Training';
 import { CartService } from '../../service/cart';
 import { Router } from '@angular/router';
 import courses from "../../../../db.json"
+import { MatGridListModule } from '@angular/material/grid-list';
 import localeFr from '@angular/common/locales/fr';
 import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
 registerLocaleData(localeFr);
 
 @Component({
 	selector: 'app-trainings',
-	imports: [CommonModule, CurrencyPipe],
+	imports: [CommonModule, CurrencyPipe, MatGridListModule],
 	templateUrl: './trainings.html',
 	styleUrl: './trainings.css',
 })

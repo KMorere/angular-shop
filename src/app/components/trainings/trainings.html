@@ -26,31 +26,37 @@
     @if (listTrainings) {
         <ng-container>
             @if (showGrid) {
-                <div class="row justify-content-center row-gap-4 column-gap-4" style="margin-top: 10px;">
-                    @for (course of listTrainings; track course) {
-                        <div class="card" style="width: 12rem;">
-                            <div class="img-container">
-                                <img src="{{course.image}}" class="card-img-top" alt="...">
-                            </div>
-                            <hr style="margin-bottom: 0px;">
-                            <div class="card-body">
-                                <h5 class="card-title">{{course.name}}</h5>
-                                <p class="card-text">{{course.description}}</p>
-                                <div class="d-flex flex-column justify-content-center align-content-end text-center">
-                                    <div class="d-flex justify-content-center align-items-center column-gap-1">
-                                        <p class="card-subtitle">{{course.price | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</p>
-                                        <td><input type="number" name="quantity" style="width: 40px" min="0" 
-                                            [value]="1" (input)="updateQuantity(course, $event.target.value)"></td>
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="course-grid">
+                    <mat-grid-list cols="4" rowHeight="350px">
+                        @for (course of listTrainings; track course) {
+                            <mat-grid-tile>
+                                <div class="card" style="width: 12rem;">
+                                    <div class="img-container">
+                                        <img src="{{course.image}}" class="card-img-top" alt="...">
                                     </div>
+                                    <hr style="margin-bottom: 0px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{course.name}}</h5>
+                                        <p class="card-text">{{course.description}}</p>
+                                        <div class="d-flex flex-column justify-content-center align-content-end text-center">
+                                            <div class="d-flex justify-content-center align-items-center column-gap-1">
+                                                <p class="card-subtitle">{{course.price | currency: 'EUR':'symbol':'1.2-2':'fr-FR'}}</p>
+                                                <td><input type="number" name="quantity" style="width: 40px" min="0" 
+                                                    [value]="1" (input)="updateQuantity(course, $event.target.value)"></td>
+                                            </div>
 
-                                    <button class="btn btn-primary" style="margin-top: 16px;" (click)="onAddToCart(course)">
-                                        <i class="bi bi-plus-square"></i>
-                                        Add to cart
-                                    </button>
+                                            <button class="btn btn-primary" style="margin-top: 16px;" (click)="onAddToCart(course)">
+                                                <i class="bi bi-plus-square"></i>
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    }
+                            </mat-grid-tile>
+                        }
+                    </mat-grid-list>
+                    </div>
                 </div>
             } @else {
                     <table class="table table-striped table-bordered" style="margin-top: 10px;">

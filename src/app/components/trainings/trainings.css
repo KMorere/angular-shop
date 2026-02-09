@@ -42,3 +42,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+mat-grid-tile:hover {
+    transform: scale(1.01);
+}
+
+.course-grid {
+    width: 928px;
+    
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    
+    margin-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+
+    border-color: gainsboro;
+    background-color: ghostwhite;
+}
