@@ -62,3 +62,7 @@
 	font-size: 80% !important;
 	text-align: center;
 }
+
+.btn-outline-secondary {
+	--bs-btn-color: var(--bs-btn-color);
+}
