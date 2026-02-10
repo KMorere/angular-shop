@@ -95,7 +95,8 @@
             }
         </ng-container>
         
-        <mat-paginator #paginator [length]="listTrainings.length" [pageIndex]="currentIndex" [pageSize]="pageCount" [pageSizeOptions]="[3, 10, 25, 50, 100]" (page)="paginateCard($event)">
+        <mat-paginator class="bg-body-tertiary bg-light" #paginator [length]="listTrainings.length" 
+        [pageIndex]="currentIndex" [pageSize]="pageCount" [pageSizeOptions]="[3, 10, 25, 50, 100]" (page)="paginateCard($event)">
         </mat-paginator>
     }
 </div>

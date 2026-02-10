@@ -61,3 +61,11 @@ mat-grid-tile:hover {
     border-color: gainsboro;
     background-color: ghostwhite;
 }
+
+:host ::ng-deep.mat-mdc-paginator {
+    color: inherit !important;
+}
+
+:host ::ng-deep.mat-mdc-paginator *  {
+    color: inherit !important;
+}
