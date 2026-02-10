@@ -29,6 +29,10 @@ export class Auth {
         return (this.currentUser != undefined && this.currentUser.roles.includes(Role.Admin));
     }
 
+    logOff() {
+        this.currentUser = new User("", "", "", []);
+    }
+
     getUser(id: string): Observable<any> {
         return this.http.get("http://localhost:3000/users/"+id);
     }
