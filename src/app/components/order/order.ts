@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Order } from '../../model/Order';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CartService } from '../../service/cart';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-order',
@@ -12,7 +14,7 @@ import { CartService } from '../../service/cart';
 export class OrderComponent {
     orderForm: FormGroup;
 
-    constructor(private form: FormBuilder, private cart: CartService) {
+    constructor(private form: FormBuilder, private cart: CartService, private http: HttpClient) {
         this.orderForm = this.form.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -23,6 +25,9 @@ export class OrderComponent {
     }
 
     onSubmitOrder() {
+        if (this.cart.cartContent == undefined) 
+            return;
+
         let order: Order = new Order(
             0,
             this.orderForm.value.firstName,
@@ -30,11 +35,24 @@ export class OrderComponent {
             this.orderForm.value.address,
             this.orderForm.value.phone,
             this.orderForm.value.mail,
-            this.cart.getTotal()
+            this.cart.getTotal(),
+            this.cart.cartContent
         );
         console.log("Started order for : ", 
             order.firstName, order.lastName, 
             "For a total of: " + this.cart.getTotal(),
         order);
+
+        this.saveOrder(order).subscribe({
+            next: (data) => {
+                console.log("Saved:", data),
+                this.cart.cartContent = [];
+            }
+        });
+    }
+
+    saveOrder(order: Order): Observable<Order> {
+        console.log("Saved order");
+        return this.http.post<Order>("http://localhost:3000/orders/", order);
     }
 }

@@ -51,5 +51,6 @@
       "quantity": 1,
       "image": "thumbnails/angular.png"
     }
-  ]
+  ],
+  "orders": []
 }
