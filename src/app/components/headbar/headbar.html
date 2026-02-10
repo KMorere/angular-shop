@@ -1,21 +1,26 @@
 <nav class="navbar navbar-expand-sm bg-body-tertiary bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">TRAININGS</a>
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" routerLink="/trainings">Courses</a>
-				</li>
-				<li class="nav-item">
-					<button class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#cart-offcanvas" 
-					matBadge="{{cart.cartContent?.length}}" matBadgeOverlap="true">Cart</button>
-				</li>
+			<div class="btn-group">
+				<button type="button" class="btn btn-outline-secondary" routerLink="/trainings">
+					<i class="bi bi-list"></i>
+					Courses
+				</button>
+
+				<button class="btn btn-outline-secondary" style="z-index: 1;"
+				data-bs-toggle="offcanvas" data-bs-target="#cart-offcanvas" 
+				matBadge="{{cart.cartContent?.length}}" matBadgeOverlap="true">
+					<i class="bi bi-bag"></i>
+					Cart
+				</button>
 
 				@if (this.auth.isAdmin()) {
-					<li class="nav-item">
-						<a class="nav-link" routerLink="/admin">Admin</a>
-					</li>
+					<button type="button" class="btn btn-outline-secondary" routerLink="/admin">
+						<i class="bi bi-gear"></i>
+						Admin
+					</button>
 				}
-			</ul>
+			</div>
 
 		<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarContent">
 			<div class="d-inline-flex align-items-center mx-3 me-4">
@@ -49,7 +54,10 @@
 
 			@if (!auth.isLoggedIn()) {
 				<button type="button" class="btn btn-primary" style="margin-left: 15px; margin-right: 10px;" 
-				data-bs-toggle="modal" data-bs-target="#register-modal">Log-in</button>
+				data-bs-toggle="modal" data-bs-target="#register-modal">
+					<i class="bi bi-box-arrow-right"></i>
+					Log-in
+				</button>
 				<app-register></app-register>
 			} @else {
 				<div class="dropdown" style="margin-left: 15px; margin-right: 10px;">
