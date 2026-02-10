@@ -1,5 +1,5 @@
 <div class="container">
-    @if (cart) {
+    @if (cart && cart.size > 0) {
         <ng-container>
             <table class="table table-striped table-bordered">
                 <thead>
@@ -49,6 +49,13 @@
                     </tr>
                 </tbody>
             </table>
+        </ng-container>
+    } @else {
+        <ng-container>
+            <div class="text-center">
+                <h3>Your cart is empty, make sure to add a product.</h3>
+                <button type="button" class="btn btn-primary" (click)="redirect()">Go back</button>
+            </div>
         </ng-container>
     }
 </div>

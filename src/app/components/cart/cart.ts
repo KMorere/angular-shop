@@ -5,6 +5,7 @@ import { OrderComponent } from "../order/order";
 import { Auth } from '../../service/auth';
 import localeFr from '@angular/common/locales/fr';
 import { CommonModule, CurrencyPipe, registerLocaleData } from '@angular/common';
+import { Router } from '@angular/router';
 registerLocaleData(localeFr);
 
 @Component({
@@ -14,7 +15,7 @@ registerLocaleData(localeFr);
     styleUrl: './cart.css',
 })
 export class Cart implements OnInit {
-    constructor(private cartService: CartService, public auth: Auth) { }
+    constructor(private cartService: CartService, public auth: Auth, private router: Router) { }
 
     cart: Set<Training> | undefined;
 
@@ -22,6 +23,10 @@ export class Cart implements OnInit {
         let courses: Training[] | undefined = [];
         courses = this.cartService.cartContent;
         this.cart = new Set(courses);
+    }
+
+    redirect() {
+        this.router.navigateByUrl("/trainings");
     }
 
     getTotal(): number {

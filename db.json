@@ -52,5 +52,33 @@
       "image": "thumbnails/angular.png"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "e5f2",
+      "firstName": "John",
+      "lastName": "Smith",
+      "address": "Hell",
+      "phone": "666",
+      "mail": "js@hell.com",
+      "date": "2026-02-10T14:41:18.501Z",
+      "total": 5000,
+      "courses": [
+        {
+          "id": "2",
+          "name": "Java",
+          "description": "Formation Java.",
+          "price": 1500,
+          "quantity": 2
+        },
+        {
+          "id": "1",
+          "name": "Python",
+          "description": "Formation Python.",
+          "price": 1000,
+          "quantity": 2,
+          "image": "thumbnails/python.png"
+        }
+      ]
+    }
+  ]
 }
