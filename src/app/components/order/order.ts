@@ -46,7 +46,8 @@ export class OrderComponent {
         this.saveOrder(order).subscribe({
             next: (data) => {
                 console.log("Saved:", data),
-                this.cart.cartContent = [];
+                this.cart.cartContent = [],
+                localStorage.removeItem("cart_products");
             }
         });
     }
