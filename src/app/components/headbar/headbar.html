@@ -15,27 +15,10 @@
 						<a class="nav-link" routerLink="/admin">Admin</a>
 					</li>
 				}
-
-				<li class="nav-item">
-					@if (!auth.isLoggedIn()) {
-						<button class="nav-link" data-bs-toggle="modal" data-bs-target="#register-modal">Log-in</button>
-						<app-register></app-register>
-					} @else {
-						<button type="button" class="btn btn-primary" (click)="auth.logOff()">Log-off</button>
-					}
-				</li>
 			</ul>
 
 		<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarContent">
-			<!-- <button type="button" class="btn btn-primary btn-sm px-2 mx-2" (click)="toggleTheme()">
-				@if (theme.theme() === "light") {
-					<i class="bi bi-sun-fill"></i>
-				} @else {
-                    <i class="bi bi-moon-stars-fill"></i>
-				}
-			</button> -->
-            
-            <div class="d-inline-flex align-items-center mx-3 me-4">
+			<div class="d-inline-flex align-items-center mx-3 me-4">
                 <input type="checkbox" class="checkbox" id="chk"
                 [checked]="theme.theme() === 'dark'" (change)="toggleTheme()"/>
                 <label class="label-switch" for="chk">
@@ -61,6 +44,31 @@
 					}
 				</ul>
 			</form>
+
+			<div class="vr" style="margin-left: 15px;"></div>
+
+			@if (!auth.isLoggedIn()) {
+				<button type="button" class="btn btn-primary" style="margin-left: 15px; margin-right: 10px;" 
+				data-bs-toggle="modal" data-bs-target="#register-modal">Log-in</button>
+				<app-register></app-register>
+			} @else {
+				<div class="dropdown" style="margin-left: 15px; margin-right: 10px;">
+					<button type="button" class="btn btn-outline-primary d-flex justify-content-center align-content-center align-items-center"
+					 style="padding-top: 0; padding-bottom: 0; padding-inline: 4px;" data-bs-toggle="dropdown">
+						<i class="bi bi-person-circle" style="font-size: 25px; margin-right: 4px;"></i>
+						Account
+					</button>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<li><a class="dropdown-item">Action 1</a></li>
+						<li><a class="dropdown-item">Action 2</a></li>
+						<li><a class="dropdown-item">Action 3</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a type="button" class="dropdown-item" (click)="auth.logOff()">
+							<i class="bi bi-box-arrow-left"></i>
+							Log-off</a></li>
+					</ul>
+				</div>
+			}
 		</div>
 	</div>
 </nav>
