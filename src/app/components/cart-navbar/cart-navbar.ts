@@ -14,7 +14,7 @@ registerLocaleData(localeFr);
     styleUrl: './cart-navbar.css',
 })
 export class CartNavbar {
-    constructor(private cartService: CartService) { }
+    constructor(public cartService: CartService) { }
 
     cart: Set<Training> | undefined;
 

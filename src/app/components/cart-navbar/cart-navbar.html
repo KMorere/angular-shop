@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for(course of cart; track course) {
+                    @for(course of cartService.cartContent; track course) {
                         <tr>
                             <td>{{course.name}}</td>
                             <td>{{course.quantity}}</td>
@@ -24,7 +24,6 @@
                             <td class="text-end">
                                 <button type="button" class="btn btn-danger" (click)="deleteCourse(course)">
                                     <img src="delete.png" width="20px" height="20px">
-                                    Delete
                                 </button>
                             </td>
                         </tr>
